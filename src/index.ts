@@ -1,21 +1,28 @@
 import { Hono } from 'hono';
-import { hashSync, compareSync } from 'bcrypt-edge';
+import { hashPassword } from './lib';
 
 const app = new Hono();
 
-app.get('/encode', async (c) => {
-	const password = c.req.query('password');
-	if (!password) return c.text('Password is required');
-	const hash = hashSync('B4c0//');
-	return c.text('Hash:' + hash);
-});
+// Register a new user
+app.post('/register', async (c) => {
+	const { email, password } = await c.req.json();
 
-app.get('/decode', async (c) => {
-	const hash = c.req.query('hash');
-	const password = c.req.query('password');
-	if (!hash || !password) return c.text('Password and Hash are required');
-	const result = compareSync('B4c0//', hash);
-	return c.text('Result: ' + result);
+	// Validate input
+	if (!email || !password) {
+		return c.json({ error: 'Email and password are required' }, 400);
+	}
+
+	// ☑️ Todo: Check if the user already exists in your database
+	// if ('☑️ USER EXISTS') {
+	// 	return c.json({ error: 'User already exists' }, 400);
+	// }
+
+	// Hash the password
+	const hashedPassword = hashPassword(password);
+
+	// ☑️ Todo: Save the user to your database
+	// users.set(email, { hashedPassword });
+	// return c.json({ message: 'User registered successfully' });
 });
 
 export default app;
