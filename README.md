@@ -1,8 +1,11 @@
-# AQYR: A Lightweight User Authentication System for Edge Runtimes
+<img src='./public/aqyr-banner.png' width='100%' />
+<center>
+<h1>aqyr: A Lightweight User Authentication System for Edge Runtimes</h1>
+</center>
 
-AQYR is a simple user authentication system built for edge runtimes like Cloudflare Workers. It provides a REST endpoint to validate user credentials and returns a response indicating whether the credentials are valid.
+'aqyr' is a simple user authentication system built for edge runtimes like Cloudflare Workers. It provides a REST endpoint to validate user credentials and returns a response indicating whether the credentials are valid.
 
-> AQYR is experimental and not production-ready.
+> 'aqyr' is experimental and not production-ready.
 
 ### Features
 
